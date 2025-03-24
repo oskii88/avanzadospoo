@@ -3,14 +3,18 @@ package tema7.ejercicio1;
 public class circulo implements Figura2 {
    private int radio;
 
+    public circulo(int radio) {
+        this.radio = radio;
+    }
+
     @Override
     public double area() {
-        return 0;
+        return 3.14*radio*radio;
     }
 
     @Override
     public double perimeter() {
-        return 0;
+        return 2*3.14*radio;
     }
 
     @Override
@@ -20,6 +24,6 @@ public class circulo implements Figura2 {
 
     @Override
     public void imprimir() {
-
+        System.out.println("el circulo tiene un area de " + area() + "y perimtro d e : " + perimeter());
     }
 }

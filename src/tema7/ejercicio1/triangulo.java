@@ -4,14 +4,19 @@ public class triangulo  implements Figura2{
     private int h;
     private int b;
 
+    public triangulo(int h, int b) {
+        this.h = h;
+        this.b = b;
+    }
+
     @Override
     public double area() {
-        return 0;
+        return (double) (b * h) /2;
     }
 
     @Override
     public double perimeter() {
-        return 0;
+        return b+h;
     }
 
     @Override
@@ -21,6 +26,6 @@ public class triangulo  implements Figura2{
 
     @Override
     public void imprimir() {
-
+        System.out.println("tu triangulo tiene : area de " + area() + " y perimetro de " + perimeter());
     }
 }
