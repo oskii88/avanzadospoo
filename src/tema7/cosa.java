@@ -1,5 +1,5 @@
 package tema7;
-
+//estos es del 1
 import tema7.ejercicio1.circulo;
 import tema7.ejercicio1.cuadrado;
 import tema7.ejercicio1.rectangulo;
@@ -10,9 +10,6 @@ import java.util.Scanner;
 public class cosa {
     public  static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-
-
-
         cuadrado c = null;
         cuadrado c3 = null;
         rectangulo b1 = null;
@@ -22,11 +19,12 @@ public class cosa {
         triangulo u1 = null;
         triangulo u2 = null;
         boolean bucle = false;
-        while (bucle == false) {
+        while (!bucle) {
             System.out.println("elige entre estas opciones ");
             System.out.println("1. crear");
             System.out.println("2. VER FIGURAS");
             System.out.println("3. escalar ");
+            System.out.println("4. parar programa");
 
             int opcion = sc.nextInt();
             switch (opcion) {
@@ -52,7 +50,20 @@ public class cosa {
                     u2.imprimir();
                     break;
                     case 3:
-
+                        System.out.println("a continuacion introduce la escala en un numero entero" );
+                        int scala = sc.nextInt();
+                        c.escalar(scala);
+                        c1.escalar(scala);
+                        c3.escalar(scala);
+                        b1.escalar(scala);
+                        b2.escalar(scala);
+                        c2.escalar(scala);
+                        u1.escalar(scala);
+                        u2.escalar(scala);
+                        break;
+                case 4:
+                   bucle = true;
+                   break;
             }
         }
     }

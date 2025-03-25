@@ -22,7 +22,7 @@ public class cuadrado implements  Figura2{
     public void escalar(int escala) {
         int  escal=escala;
         lado=escal*lado;
-
+          System.out.println("El escala fue modificada");
     }
 
     @Override

@@ -19,6 +19,12 @@ public class rectangulo implements Figura2 {
         return 2*alto+2*ancho;
     }
 
+    @Override
+    public void escalar(int escala) {
+        ancho=ancho*escala;
+        alto=alto*escala;
+        System.out.println("la escla del rectangulo fue modificada: ");
+    }
 
 
     @Override

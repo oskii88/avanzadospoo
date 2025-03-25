@@ -20,8 +20,10 @@ public class triangulo  implements Figura2{
     }
 
     @Override
-    public void escalar(double escala) {
-
+    public void escalar(int escala) {
+        h= h* escala;
+        b=b*escala;
+        System.out.println("la escala del triangulo fue modificada");
     }
 
     @Override

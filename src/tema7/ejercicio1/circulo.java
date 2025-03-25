@@ -18,8 +18,9 @@ public class circulo implements Figura2 {
     }
 
     @Override
-    public void escalar(double escala) {
-
+    public void escalar(int escala) {
+        radio= escala * radio;
+        System.out.println("la escala de circulo a sido ,modificada");
     }
 
     @Override
