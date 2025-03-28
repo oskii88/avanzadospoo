@@ -19,14 +19,37 @@ public class mains {
             System.out.println("5. acabar programa");
             System.out.println("introduce la opcion");
             opcion = sc.nextInt();
+
+
             switch (opcion) {
                 case 1:
                     int modicador=0;
-                    boolean bucle1 = false;
-                    System.out.println("introduce el modificador ");
+                    System.out.println("introduce el numero que se va  modificadar ");
                    modicador = sc.nextInt();
 
+                  break;
+                  case 2:
+                      System.out.println("pon la cantidad que modifiacara a ese numero");
+                      int cantidad = sc.nextInt();
+                      break;
+                      case 3:
+                          System.out.println("pon 1 para suma 2 para multiplicacion 3 division");
+                          int operacion = sc.nextInt();
+                          System.out.println("ahora si 1.codificaras o 2.descodificaras");
+                          int cod = sc.nextInt();
+                          if(cod == 1){
+                              if(operacion == 1){
 
+                              } else if (operacion == 2) {
+
+                              }else {}
+
+                          }else
+                          break;
+                              case 4:
+                                  System.out.println("ADIOS!!!!!!!!!!!!!!!");
+                                  bucle=true;
+                                  break;
 
 
             }
