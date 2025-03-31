@@ -15,34 +15,53 @@ public class mains {
             System.out.println("1. introducir numero que va a modificar");
             System.out.println("2. cantidad numerica que modificara al numero");
             System.out.println("3. TIPO + codificar y descodificar");
-            System.out.println("4. imprimir resultados ");
-            System.out.println("5. acabar programa");
+            System.out.println("4. acabar programa");
             System.out.println("introduce la opcion");
             opcion = sc.nextInt();
-
+             int modificador=0;
+             int operacion=0;
 
             switch (opcion) {
                 case 1:
-                    int modicador=0;
+
                     System.out.println("introduce el numero que se va  modificadar ");
-                   modicador = sc.nextInt();
+                    modificador = sc.nextInt();
 
                   break;
                   case 2:
                       System.out.println("pon la cantidad que modifiacara a ese numero");
-                      int cantidad = sc.nextInt();
+                      operacion = sc.nextInt();
                       break;
                       case 3:
                           System.out.println("pon 1 para suma 2 para multiplicacion 3 division");
-                          int operacion = sc.nextInt();
+                           operacion = sc.nextInt();
                           System.out.println("ahora si 1.codificaras o 2.descodificaras");
                           int cod = sc.nextInt();
                           if(cod == 1){
                               if(operacion == 1){
+                                  if(cod == 1){
+
+                                      Cifrador.suma(modificador,operacion);
+                                  }else {
+                                       Cifrador.dessuma(modificador,operacion);
+                                  }
+
 
                               } else if (operacion == 2) {
+                                  if (cod == 1){
+                                            Cifrador.multiplicaion(modificador,operacion);
+                                  }else{
+                                      Cifrador.desciframult(modificador,operacion);
+                                  }
 
-                              }else {}
+                              }else {
+                                  if(cod == 1){
+                                      Cifrador.division(modificador,operacion);
+                                  }else {
+                                      Cifrador.decodifidiv(modificador,operacion);
+                                  }
+
+                              }
 
                           }else
                           break;
