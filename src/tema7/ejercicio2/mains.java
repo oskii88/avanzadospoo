@@ -64,7 +64,7 @@ public class mains {
                               }
 
                           }else
-                          break;
+                              break;
                               case 4:
                                   System.out.println("ADIOS!!!!!!!!!!!!!!!");
                                   bucle=true;
