@@ -11,32 +11,26 @@ public class PRUEAB1 {
         try {
             // Cargamos la clase que implementa el Driver
             Class.forName("com.mysql.cj.jdbc.Driver");
-
             // Creamos una nueva conexión a la base de datos "bdpruebas"
-            String url = "jdbc:mysql://localhost:3306/bdpruebas";
-
+            String url = "jdbc:mysql://localhost:3306/nba";
             // Abrimos la conexión con el usuario y la clave correspondiente
-            conn = DriverManager.getConnection(url, "root", "1234");
+            conn = DriverManager.getConnection(url, "root", "")
 
-            // Otra opción de apertura de la conexión
-            // Connection conn = DriverManager.getConnection(url + "?user=root&password=1234");
+
 
             // Obtenemos un Statement de la conexión
             stmt = conn.createStatement();
-            // Acá podrías agregar un bloque catch y finally si lo necesitás
-            // Creamos y ejecutamos la consulta SELECT sobre la "tablapruebas"
-            String sql = "SELECT * FROM tablapruebas";
+            //consultas
+            String sql = "SELECT nombre, ciudad, conferencia, division FROM equipos";
             rs = stmt.executeQuery(sql);
-
-// También se puede comprobar la sentencia y luego recoger el resultado
-// if (stmt.execute(sql)) { rs = stmt.getResultSet(); }
 
 // Como deberíamos obtener resultados, recorremos el ResultSet y mostramos sus datos
             while (rs.next()) {
-                int id = rs.getInt("id");
-                String nombre = rs.getString("campo1");
-                Date fecha = rs.getDate("campo2");
-                System.out.println(id + " " + nombre + " " + fecha);
+                String n = rs.getString("Nombre");
+                String c = rs.getString("Ciudad");
+                String co = rs.getString("Conferencia");
+                String di  = rs.getString("Division");
+                System.out.println( n + " " + c + " " + co + " " + di);
             }
 
 // Cerramos el ResultSet, el Statement y la conexión
