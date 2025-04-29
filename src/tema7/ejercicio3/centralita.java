@@ -1,11 +1,11 @@
 package tema7.ejercicio3;
 
 public class centralita {
-      private int numllamdas;
+      private int numllamdas =0 ;
       private int costellamadas;
 
     public centralita(int numllamdas, int costellamadas) {
-        this.numllamdas = numllamdas;
+        numllamdas ++;
         this.costellamadas = costellamadas;
     }
 }
