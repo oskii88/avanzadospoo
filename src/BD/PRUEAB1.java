@@ -46,7 +46,7 @@ public class PRUEAB1 {
                         String e
 
                                 = "SELECT nombre, ciudad, conferencia, division FROM jugadores WHERE altura =(SELECT max(altura)from jugadores))";
-                        rs = stmt.executeQuery(sql);
+                        //rs = stmt.executeQuery(sql);
 
                 }
             }
