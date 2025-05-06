@@ -22,31 +22,46 @@ public class PRUEAB1 {
             // Obtenemos un Statement de la conexión
             stmt = conn.createStatement();
             System.out.println("a continuacion veras el menu para sacar la info de los datos de la nba actuales en la base de datos");
-            boolean fin = false;
-            while (fin == false) {
+            boolean fin = true;
+            while (fin) {
                 int opcion = 0;
+
                 System.out.println("introduce la opcion");
                 System.out.println("1.El jugador mas alto de la NBA");
                 System.out.println("2.El jugador mas bajo de la NBA");
                 System.out.println("3.Jugadores de los Leakers ");
                 System.out.println("4.Jugador con ma puntos ");
                 System.out.println("5. finalizar");
+                opcion = sc.nextInt();
                 switch (opcion) {
-                    case 1:      String sql = "SELECT nombre, ciudad, conferencia, division FROM jugadores WHERE altura =(SELECT max(altura)from jugadores))";
+                    case 1:      String sql = "SELECT Nombre, Procedencia, altura, peso FROM jugadores WHERE altura =(SELECT max(altura)from jugadores)";
                     rs = stmt.executeQuery(sql);
                         while (rs.next()) {
                             String n = rs.getString("Nombre");
-                            String c = rs.getString("Ciudad");
-                            String co = rs.getString("Conferencia");
-                            String di  = rs.getString("Division");
+                            String c = rs.getString("Procedencia");
+                            String co = rs.getString("altura");
+                            String di  = rs.getString("peso");
                             System.out.println( n + " " + c + " " + co + " " + di);
                         }
                         break;
                     case 2:
-                        String e
 
-                                = "SELECT nombre, ciudad, conferencia, division FROM jugadores WHERE altura =(SELECT max(altura)from jugadores))";
-                        //rs = stmt.executeQuery(sql);
+
+                        String sl  = "INSERT INTO equipos (Nombre,Ciudad,Conferencia,Division) VALUES ('Pucela','Valladolid','West','Europe')";
+                        int numresul = stmt.executeUpdate(sl);
+                        if (numresul > 0) {
+                            System.out.println("se añadio con exito " + numresul + "numer de filas");
+
+                        }else {
+                            System.out.println("no se modifico");
+                        }
+                        break;
+
+                     case 3:
+                         fin = false;
+                         break;
+
+
 
                 }
             }
@@ -61,16 +76,9 @@ public class PRUEAB1 {
 
 
 // Como deberíamos obtener resultados, recorremos el ResultSet y mostramos sus datos
-            while (rs.next()) {
-                String n = rs.getString("Nombre");
-                String c = rs.getString("Ciudad");
-                String co = rs.getString("Conferencia");
-                String di  = rs.getString("Division");
-                System.out.println( n + " " + c + " " + co + " " + di);
-            }
 
 // Cerramos el ResultSet, el Statement y la conexión
-            rs.close();
+
             stmt.close();
             conn.close();
 

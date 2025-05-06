@@ -1,55 +1,52 @@
 package BD;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.Scanner;
 import java.sql.*;
+import java.util.Scanner;
 
-public class PRUEB2 {
-     public static void main(String[] args) {
-         Statement stmt = null;
-         ResultSet rs = null;
-         String bd = "nba";
-         String url = "jdbc:mysql://localhost:3306/" + bd;
-         String user = "root";
-         String pass = "";
-         try {
-             Class.forName("com.mysql.cj.jdbc.Driver");
-             Connection conn = DriverManager.getConnection(url, user, pass);
-             stmt = conn.createStatement();
+public class plantillaparaejercicios {
+    public static void main(String[] args) {
+        Statement stmt = null;
+        ResultSet rs = null;
+        String bd = "nba";
+        String url = "jdbc:mysql://localhost:3306/" + bd;
+        String user = "root";
+        String pass = "";
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection conn = DriverManager.getConnection(url, user, pass);
+            stmt = conn.createStatement();
 
-             programa(stmt, rs);
+            programa(stmt, rs);
 
-             stmt.close();
-             conn.close();
-         } catch (SQLException ex) {
-             System.out.println("SQLException: " + ex.getMessage());
-             System.out.println("SQLState: " + ex.getSQLState());
-             System.out.println("VendorError: " + ex.getErrorCode());
-         } catch (Exception e) {
-             System.out.println("Error: " + e.getMessage());
-         } finally {    //Una mejor forma sería cerrar el ResultSet y el Statement en el finally si queremos
-             if (rs != null) {
-                 try {
-                     rs.close();
-                 } catch (SQLException sqlEx) {
-                     System.out.println("Error al cerrar el ResultSet.");
-                 }
-                 rs = null;    //Vaciamos la variable para liberarla
-             }
-             if (stmt != null) {
-                 try {
-                     stmt.close();
-                 } catch (
-                         SQLException sqlEx) {
-                     System.out.println("Error al cerrar el Statement.");
-                 }
-                 stmt = null;    //Vaciamos la variable para liberarla
-             }
-         }
-     }
-
+            stmt.close();
+            conn.close();
+        } catch (SQLException ex) {
+            System.out.println("SQLException: " + ex.getMessage());
+            System.out.println("SQLState: " + ex.getSQLState());
+            System.out.println("VendorError: " + ex.getErrorCode());
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+        } finally {    //Una mejor forma sería cerrar el ResultSet y el Statement en el finally si queremos
+            if (rs != null) {
+                try {
+                    rs.close();
+                } catch (SQLException sqlEx) {
+                    System.out.println("Error al cerrar el ResultSet.");
+                }
+                rs = null;    //Vaciamos la variable para liberarla
+            }
+            if (stmt != null) {
+                try {
+                    stmt.close();
+                } catch (
+                        SQLException sqlEx) {
+                    System.out.println("Error al cerrar el Statement.");
+                }
+                stmt = null;    //Vaciamos la variable para liberarla
+            }
+        }
+    }
+    //programa
     private static void programa(Statement stmt, ResultSet rs) throws SQLException {
         int opcion = 0;
         Scanner sc = new Scanner(System.in);
@@ -117,5 +114,5 @@ public class PRUEB2 {
         System.out.println("3. Jugadores de los Lakers");
         System.out.println("4. Jugador con más puntos");
         System.out.println("5. Salir");
-     }
+    }
 }
