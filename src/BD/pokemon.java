@@ -90,11 +90,11 @@ public class pokemon {
                      }
                     break;
                 case 4:
-                    int tip =0;
-                    System.out.println("introduce el tipo y te pondre que pokemons tienen ese tipo");
-                    tip = sc.nextInt();
 
-                    String tips = "select nombre from pokemon where tipo = ' " + tip + "'";
+                    System.out.println("introduce el tipo y te pondre que pokemons tienen ese tipo");
+
+
+                    String tips = "Select p.id,p.nombre,p.puntosVida,t.nombre FROM pokemon p LEFT JOIN tipospokemon t on p.tipo=t.id";
                     rs = stmt.executeQuery(tips);
                     while (rs.next()) {
                         String nombre = rs.getString("nombre");
@@ -133,8 +133,9 @@ public class pokemon {
                                 String tpo = sc.nextLine();
 
                                 String inser =  "INSERT INTO tipospokemon (nombre) VALUES ('" +tpo +"')";
-                                rs =  stmt.executeQuery(inser);
+                                int a =  stmt.executeUpdate(inser);
 
+                                if()
 
                                 break;
 
