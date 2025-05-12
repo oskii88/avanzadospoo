@@ -135,7 +135,7 @@ public class pokemon {
                                 String inser =  "INSERT INTO tipospokemon (nombre) VALUES ('" +tpo +"')";
                                 int a =  stmt.executeUpdate(inser);
 
-                                if()
+
 
                                 break;
 
