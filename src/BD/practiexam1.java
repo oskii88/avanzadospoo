@@ -7,56 +7,54 @@ public class practiexam1 {
     public static void main(String[] args) throws SQLException {
         Statement stmt = null;
         ResultSet rs =null;
+        Connection conn=null;
         String bd = "nba";
-        String url = "jdbc:mysql://localhost:3306/" + bd   ;
+        String url = "jdbc:mysql://localhost:3306/nba"    ;
         String user = "root";
         String pass = "";
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection conn = DriverManager.getConnection(url, user, pass);
+            conn = DriverManager.getConnection(url, user, pass);
             stmt = conn.createStatement();
 
             programa(stmt, rs);
 
-            stmt.close();
-            conn.close();
+
         } catch (SQLException ex) {
             System.out.println("SQLException: " + ex.getMessage());
             System.out.println("SQLState: " + ex.getSQLState());
             System.out.println("VendorError: " + ex.getErrorCode());
         } catch (Exception e) {
             System.out.println("Error: " + e.getMessage());
-        } finally {    //Una mejor forma sería cerrar el ResultSet y el Statement en el finally si queremos
-            if (rs != null) {
+        } finally {//Una mejor forma sería cerrar el ResultSet y el Statement en el finally si queremos
                 try {
-                    rs.close();
+                    if (rs != null) rs.close();
+
                 } catch (SQLException sqlEx) {
                     System.out.println("Error al cerrar el ResultSet.");
                 }
-                rs = null;    //Vaciamos la variable para liberarla
-            }
-            if (stmt != null) {
-                try {
-                    stmt.close();
-                } catch (
-                        SQLException sqlEx) {
-                    System.out.println("Error al cerrar el Statement.");
-                }
-                stmt = null;    //Vaciamos la variable para liberarla
-            }
-            String sql = "select nombre,ciudad,conferencia from productos;";
-            rs = stmt.executeQuery(sql);
-            while (rs.next()) {
-                /*Acceso a los campos de la tabla*/
-                int nom = rs.getInt("nombre");
-                String ciu = rs.getString("ciudad");
-                String con = rs.getString("conferencia");
-                System.out.println(nom+" "+ciu+" "+con);
+                    //Vaciamos la variable para liberarla
 
+
+                try {
+                    if (stmt != null) stmt.close();
+
+                } catch (SQLException e) {
+                    System.out.println("Error al cerrar el Statement." + e.getMessage());
+                }
+            try {
+                if (conn != null) conn.close();   // 3. Por último, Connection
+            } catch (SQLException e) {
+                System.out.println("Error al cerrar Connection: " + e.getMessage());
             }
+                    //Vaciamos la variable para liberarla
+
             programa(stmt,rs);
+
         }
     }
+
+
 
     private static void programa(Statement stmt, ResultSet rs) throws SQLException {
         int opcion = 0;
@@ -69,7 +67,7 @@ public class practiexam1 {
 
             switch (opcion) {
                 case 1:
-                     mostrarequipos(stmt, rs);
+                     mostrarequipos(stmt);
                     break;
                 case 2:
 
@@ -113,11 +111,10 @@ public class practiexam1 {
             System.out.println("No se ha modificado la BD");
         }
     }
-
-    private static void mostrarequipos(Statement stmt, ResultSet rs) throws SQLException {
+    private static void mostrarequipos(Statement stmt) throws SQLException {
         /*Consulta*/
         String sql = "select nombre,ciudad,conferencia from productos;";
-        rs = stmt.executeQuery(sql);
+        ResultSet rs = stmt.executeQuery(sql);
         while (rs.next()) {
             /*Acceso a los campos de la tabla*/
             int nom = rs.getInt("nombre");
