@@ -134,12 +134,13 @@ public class pokemon {
 
                                 String inser =  "INSERT INTO tipospokemon (nombre) VALUES ('" +tpo +"')";
                                 int a =  stmt.executeUpdate(inser);
+                            if (a > 0) {
+                                System.out.println("se añadio con exito " + a + "numer de filas");
 
-
-
-                                break;
-
-
+                            }else {
+                                System.out.println("no se modifico");
+                            }
+                            break;
 
 
 
