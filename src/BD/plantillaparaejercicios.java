@@ -58,15 +58,8 @@ public class plantillaparaejercicios {
             switch (opcion) {
                 case 1:
 
-                    /*Consulta*/
-                    String sql = "select nombre from jugadores where altura=(select max(altura) from jugadores);";
-                    rs = stmt.executeQuery(sql);
-                    while (rs.next()) {
-                        /*Acceso a los campos de la tabla*/
-                        String nombre = rs.getString("nombre");
-                        System.out.println("El jugador más alto es: " + nombre);
-                    }
-                    rs.close();    // Cerramos el ResultSet, el Statement y la conexión
+
+
                     break;
                 case 2:
                     jugadorBajo(stmt, rs);
